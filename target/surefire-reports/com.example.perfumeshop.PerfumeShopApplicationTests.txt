@@ -1,0 +1,18 @@
+-------------------------------------------------------------------------------
+Test set: com.example.perfumeshop.PerfumeShopApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 3.91 s <<< FAILURE! - in com.example.perfumeshop.PerfumeShopApplicationTests
+contextLoads  Time elapsed: 0.113 s  <<< ERROR!
+org.springframework.dao.DuplicateKeyException: 
+
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'e88rice' for key 'user_tbl.PRIMARY'
+### The error may exist in file [C:\Users\Administrator\Desktop\intelliJ_LHJ\perfumeShop\target\classes\mybatis\mappers\UserMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: INSERT INTO `user_tbl` (`userID`, `userPW`, `userName`, `userNickname`, `userEmail`, `userTel`)         VALUES (?, ?, ?, ?, ?, ?)
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'e88rice' for key 'user_tbl.PRIMARY'
+; Duplicate entry 'e88rice' for key 'user_tbl.PRIMARY'; nested exception is java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'e88rice' for key 'user_tbl.PRIMARY'
+	at com.example.perfumeshop.PerfumeShopApplicationTests.contextLoads(PerfumeShopApplicationTests.java:31)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'e88rice' for key 'user_tbl.PRIMARY'
+	at com.example.perfumeshop.PerfumeShopApplicationTests.contextLoads(PerfumeShopApplicationTests.java:31)
+

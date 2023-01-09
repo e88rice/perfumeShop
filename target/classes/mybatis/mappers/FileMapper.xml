@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.perfumeshop.mapper.FileMapper">
+
+    <insert id="add_file">
+        INSERT INTO `file_tbl` (`filename`, `filepath`, `perfumeID`)
+        VALUES (#{filename}, #{filepath}, #{perfumeID})
+    </insert>
+
+    <select id="file_info_get" resultType="com.example.perfumeshop.vos.FileVO">
+        SELECT * FROM `file_tbl` WHERE `perfumeID` = #{perfumeID} AND `filename` NOT LIKE '%main%';
+    </select>
+
+</mapper>

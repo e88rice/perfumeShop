@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>관리자_상품 추가</title>
+</head>
+<link rel="stylesheet" th:href="@{/css/layout/padding.css}" href="../../static/css/layout/padding.css">
+<link rel="stylesheet" th:href="@{/css/layout/header.css}" href="../../static/css/layout/header.css">
+<link rel="stylesheet" th:href="@{/css/layout/footer.css}" href="../../static/css/layout/footer.css">
+<link rel="stylesheet" th:href="@{/css/admin/add_product.css}" href="../../static/css/admin/add_product.css">
+<script src="https://kit.fontawesome.com/4ae8b5f015.js" crossorigin="anonymous"></script>
+<script th:src="@{/js/admin/add_product.js}" src="../../static/js/admin/add_product.js"></script>
+<header id="header" th:replace="/layout/header :: header-main"></header>
+<body>
+<div id="add_product_container">
+  <form th:action="@{/admin/add_product.do}" th:method="post" enctype="multipart/form-data">
+      <div class="filebox">
+          상품 이미지:
+          <div class="imgs_box">
+          </div>
+          <label for="file_btn">파일첨부</label>
+          <input type="file" multiple="multiple" id="file_btn" accept="image/*" onchange="setThumbnail(event)" name="files">
+      </div>
+
+      <div class="perfumebox">
+          <div class="perfume_inputs"><span>상호명: </span><input type="text" placeholder="ex)조말론" name="perfumeCompany"></div>
+          <div class="perfume_inputs"><span>추천성별: </span><input type="text" placeholder="ex)woman or man or all" name="perfumeGender"></div>
+          <div class="perfume_inputs"><span>상품명: </span><input type="text" placeholder="ex)디올 옴므 오 드 뚜왈렛" name="perfumeTitle"></div>
+          <div class="perfume_inputs"><span>상품소개: </span><input type="text" placeholder="ex)호불호 없는 베티버, 맡기만 해도 마음이..." name="perfumeContent"></div>
+          <div class="perfume_inputs"><span>상품향: </span><input type="text" placeholder="ex)라임&바질" name="perfumeScent"></div>
+          <div class="perfume_inputs"><span>상품판매가격: </span><input type="number" placeholder="ex)390000" name="perfumePrice"></div>
+          <div class="perfume_inputs"><span>상품원래가격: </span><input type="number" placeholder="ex)430000" name="perfumeOriginPrice"></div>
+          <div class="perfume_inputs"><span>상품양: </span><input type="number" placeholder="ex)50" name="perfumeML"></div>
+      </div>
+
+      <div class="btns">
+          <button type="submit">상품등록</button>
+          <a th:href="@{/}">
+              <button type="button">돌아가기</button>
+          </a>
+      </div>
+
+  </form>
+</div>
+</body>
+<footer id="footer" th:replace="/layout/footer :: footer-main"></footer>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>주문서 작성</title>
+</head>
+<link rel="stylesheet" th:href="@{/css/layout/padding.css}" href="../../static/css/layout/padding.css">
+<link rel="stylesheet" th:href="@{/css/layout/header.css}" href="../../static/css/layout/header.css">
+<link rel="stylesheet" th:href="@{/css/layout/footer.css}" href="../../static/css/layout/footer.css">
+<link rel="stylesheet" th:href="@{/css/product/order.css}" href="../../static/css/product/order.css">
+<script th:src="@{/js/product/order.js}" src="../../static/js/product/order.js" defer></script>
+<script src="https://kit.fontawesome.com/4ae8b5f015.js" crossorigin="anonymous"></script>
+<header id="header" th:replace="/layout/header :: header-main"></header>
+<body>
+<div id="container">
+    <div id="order_list">
+        <div>주문리스트</div>
+        <table class="table">
+            <tr>
+                <th>제품</th>
+                <th>수량</th>
+                <th>가격</th>
+            </tr>
+            <tr th:each="perfume, i: ${perfumes}">
+                <td class="product_title_image">
+                    <input type="hidden" class="save_perfumeID" th:value="${perfume.getPerfumeID()}">
+                    <input type="hidden" class="save_count" th:value="${counts.get(i.index)}">
+                    <img th:src="@{/image/products/{image}(image = ${perfume.getPerfumeImage()})}" width="60px" alt="상품사진">
+                    <div th:text="|[${perfume.getPerfumeCompany()}] ${perfume.getPerfumeTitle()}|"></div>
+                </td>
+                <td class="product_count" th:text="|${counts.get(i.index)}개|"></td>
+                <td class="product_price" th:text="${perfume.getPerfumePrice()*counts.get(i.index)}"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="user_info">
+        <div>주문자정보</div>
+        <div class="user_info">
+            <span>이름</span>
+            <span th:text="${#authentication.principal.userName}"></span>
+        </div>
+        <div class="user_info">
+            <span>이메일</span>
+            <input type="text" th:value="${#authentication.principal.userEmail}"></div>
+        <div class="user_info">
+            <span>연락처</span>
+            <input id="user_tel_1" type="text">
+            <span>-</span>
+            <input id="user_tel_2" type="text">
+            <span>-</span>
+            <input id="user_tel_3" type="text">
+            <input type="hidden" id="user_tel" th:value="${#authentication.principal.userTel}">
+        </div>
+    </div>
+
+
+    <div id="address">
+        <div>배송 정보</div>
+
+        <div class="address_info">
+            <span>이름</span>
+            <input type="text" th:value="${#authentication.principal.userName}">
+        </div>
+
+        <div class="address_info">
+            <span>연락처</span>
+            <input id="address_tel_1" type="text">
+            <span>-</span>
+            <input id="address_tel_2" type="text">
+            <span>-</span>
+            <input id="address_tel_3" type="text">
+        </div>
+
+        <div class="address_info">
+            <span>배송지 선택</span>
+            <input type="radio" name="addr" checked>자택
+            <input type="radio" name="addr">최근 배송지
+        </div>
+
+        <div class="address_info address">
+
+            <span>주소</span>
+            <div id="address_wrap">
+                <div id="address_part_1">
+                    <input type="text">
+                    <span>-</span>
+                    <input type="text">
+                    <button type="button">우편번호</button>
+                </div>
+
+                <div id="address_part_2">
+                    <input type="text" placeholder="상세 주소를 적어주세요">
+                </div>
+            </div>
+        </div>
+
+        <div class="address_info message">
+            <div id="order_message">
+                <div>주문메세지</div>
+                <div>(100자내외)</div>
+            </div>
+            <textarea cols="100" rows="6" maxlength="100"></textarea>
+        </div>
+    </div>
+
+    <div id="order">
+        <div>결제 정보</div>
+        <div class="order_price">
+            <span>결제금액</span>
+            <span id="total_order_price">255,000원</span>
+        </div>
+
+        <div class="how_payment">
+            <span>결제방법</span>
+
+            <div class="payment">
+                <div><input type="radio" name="payment" checked><span>신용카드</span></div>
+                <div><input type="radio" name="payment"><span>무통장입금</span></div>
+                <div><input type="radio" name="payment"><span>휴대폰결제</span></div>
+                <div><input type="radio" name="payment"><span>실시간 계좌이체</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="order_btns">
+        <button id="order_btn">주문하기</button>
+        <button id="cancle_btn">주문취소</button>
+    </div>
+</div>
+<div id="margin"></div>
+</body>
+<footer id="footer" th:replace="/layout/footer :: footer-main"></footer>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="|${#authentication.principal.userNickname}님의 마이페이지|"></title>
+</head>
+<link rel="stylesheet" th:href="@{/css/layout/padding.css}" href="../../static/css/layout/padding.css">
+<link rel="stylesheet" th:href="@{/css/layout/header.css}" href="../../static/css/layout/header.css">
+<link rel="stylesheet" th:href="@{/css/layout/footer.css}" href="../../static/css/layout/footer.css">
+<link rel="stylesheet" th:href="@{/css/user/mypage.css}" href="../../static/css/user/mypage.css">
+<link rel="stylesheet" th:href="@{/css/paginate/paginate.css}" href="../../static/css/paginate/paginate.css">
+<link rel="stylesheet" th:href="@{/css/paginate/ligne.css}" href="../../static/css/paginate/ligne.css">
+<script src="https://kit.fontawesome.com/4ae8b5f015.js" crossorigin="anonymous"></script>
+<script th:src="@{/js/user/mypage.js}" src="../../static/js/user/mypage.js" defer></script>
+<header id="header" th:replace="/layout/header :: header-main"></header>
+
+<body>
+<div id="mypage_main_container">
+    <div>마이페이지</div>
+
+    <div id="mypage_info">
+
+        <div class="info-part1"><i class="fa-solid fa-user"></i></div>
+
+        <div class="info-part2">
+            <div class="info userName"><b><span th:text="${#authentication.principal.userName}"></span></b>님 반갑습니다</div>
+            <div class="info userPhone"><span>전 화</span><span th:text="${#authentication.principal.userTel}"></span></div>
+            <div class="info userEmail"><span>이 메 일</span><span th:text="${#authentication.principal.userEmail}"></span></div>
+            <div class="info registerDate"><span>가 입 일</span><span th:text="${#authentication.principal.registerDate}"></span></div>
+        </div>
+
+        <div class="info-part3">
+            <div class="info total_order">
+                <span><b>총 주문금액:</b></span>
+                <span id="total_order_price"><b>0원</b></span>
+            </div>
+            <div class="info savings">
+                <span>적립금</span>
+                <span id="total_saving">0원</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="order-list">최근 주문 정보</div>
+        <div th:if="${orderList.isEmpty()}" class="null-message"> 주문 내역이 없습니다 </div>
+        <table th:if="${orderList.isEmpty() == false}"class="myTable table hover">
+            <tbody>
+            <tr>
+                <th>주문일</th>
+                <th>상품사진</th>
+                <th>상품명</th>
+                <th>수량</th>
+                <th>상품금액</th>
+                <th>주문정보</th>
+            </tr>
+            <tr th:each="order : ${orderList}">
+                <td th:text="${order.orderDate}"></td>
+                <td><img th:src="|@{/image/products/{image}(image = ${order.perfumeImage})}|" alt="상품사진"></td>
+                <td class="titles" th:text="${order.perfumeTitle}"></td>
+                <td th:text="${order.orderCount}"></td>
+                <td class="order_prices prices" th:text="|${order.perfumePrice}원|"></td>
+                <td>배송준비중</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container">
+        <div class="basket-list">내 장바구니</div>
+        <div th:if="${basketList.isEmpty()}" class="null-message"> 장바구니 내역이 없습니다 </div>
+        <table th:if="${basketList.isEmpty() == false}" class="table hover">
+            <tbody>
+            <tr>
+                <th>번호</th>
+                <th>상품사진</th>
+                <th>상품명</th>
+                <th>수량</th>
+                <th>상품금액</th>
+                <th>배송비</th>
+                <th>취소</th>
+            </tr>
+            <tr th:each="basket, i : ${basketList}">
+                <input type="hidden" class="save_perfumeID" th:value="${basket.perfumeID}">
+                <td th:text="${i.index+1}"></td>
+                <td><img th:src="@{/image/products/{image}(image = ${basket.perfumeImage})}" alt="상품사진"></td>
+                <td class="titles" th:text="${basket.perfumeTitle}"></td>
+                <td class="product-count">
+                    <input class="product-count-input" type="number" value="1">
+                    <button class="count-plus-btn"><i class="fa-solid fa-plus"></i></button>
+                    <button class="count-minus-btn"><i class="fa-solid fa-minus"></i></button>
+                </td>
+                <td class="basket_prices prices" th:text="${basket.perfumePrice}"></td>
+                <td class="basket_prices prices">2500</td>
+                <td>
+                    <button class="basket_delete_btn" th:onclick="|location.href='@{/user/mypage/basket/del/{index}(index=${basket.index})}'|"><i class="fa-solid fa-xmark"></i></button>
+                </td>
+                <input type="hidden" th:value="${basket.perfumePrice}">
+            </tr>
+            </tbody>
+        </table>
+        <div th:if="${basketList.isEmpty() == false}" id="total_price"></div>
+        <div th:if="${basketList.isEmpty() == false}" id="btns">
+            <button id="all-buy-btn">장바구니 구매하기</button>
+            <button id="all-del-btn" th:onclick="|location.href='@{/user/mypage/basket/del/{index}(index=0)}'|">
+                장바구니 비우기
+            </button>
+        </div>
+    </div>
+
+</div>
+
+</body>
+<footer id="footer" th:replace="/layout/footer :: footer-main"></footer>
+</html>

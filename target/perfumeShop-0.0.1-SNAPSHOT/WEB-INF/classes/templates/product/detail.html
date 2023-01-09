@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>상품이름</title>
+</head>
+
+<link rel="stylesheet" th:href="@{/css/layout/padding.css}" href="../../static/css/layout/padding.css">
+<link rel="stylesheet" th:href="@{/css/layout/header.css}" href="../../static/css/layout/header.css">
+<link rel="stylesheet" th:href="@{/css/layout/footer.css}" href="../../static/css/layout/footer.css">
+<link rel="stylesheet" th:href="@{/css/product/detail.css}" href="../../static/css/product/detail.css">
+<script src="https://kit.fontawesome.com/4ae8b5f015.js" crossorigin="anonymous"></script>
+<script src="../../static/js/product/detail.js" th:src="@{/js/product/detail.js}" defer></script>
+<header id="header" th:replace="/layout/header :: header-main"></header>
+<body>
+
+<div class="margin-wrap">
+    <div id="product-detail-wrap">
+        <input id="save_perfumeID" type="hidden" th:value="${perfume_info.getPerfumeID()}">
+        <div id="product-detail-left">
+            <div id="product-main-image-wrap">
+                <img id="main-image" th:src="|@{/image/products/{image}(image= ${perfume_info.getPerfumeImage()})}|" alt="상품사진">
+            </div>
+
+            <div id="product-sub-image-wrap">
+<!--                <img class="sub-image" th:src="@{/image/products/2.jpg}" src="../../static/image/products/2.jpg" alt="">-->
+<!--                <img class="sub-image" th:src="@{/image/products/3.jpg}" src="../../static/image/products/3.jpg" alt="">-->
+<!--                <img class="sub-image" th:src="@{/image/products/4.jpg}" src="../../static/image/products/4.jpg" alt="">-->
+            </div>
+        </div>
+
+        <div id="product-detail-right">
+            <div id="product-title">
+                <span th:text="|[${perfume_info.getPerfumeCompany()}]${perfume_info.getPerfumeTitle()}|">까르뱅 쎄 파리 옴므 EDT 50ml</span>
+            </div>
+            <div id="product-price">
+                <span class="product-span-1">판매가격</span>
+                <span id="product-price-text" th:text="${perfume_info.getPerfumePrice()}">28,900</span>
+                <input id="product-save-price-hidden" type="hidden" th:value="${perfume_info.getPerfumePrice()}">
+            </div>
+            <div id="product-price2" th:if="${perfume_info.getPerfumePrice() != perfume_info.getPerfumeOriginPrice()}">
+                <span class="product-span-1">소비자가격</span>
+                <span id="product-origin-price-text" th:text="${perfume_info.getPerfumeOriginPrice()}">58,800</span>
+                <input id="product-save-origin-price-hidden" type="hidden" th:value="${perfume_info.getPerfumePrice()}">
+            </div>
+            <div id="product-check">
+                <span class="product-span-1">크기&향</span>
+                <span th:text="|${perfume_info.getPerfumeML()}ml / ${perfume_info.getPerfumeScent()}|">50ml 우드</span>
+            </div>
+            <div id="product-gender">
+                <span class="product-span-1">추천성별</span>
+                <span th:text="${perfume_info.getPerfumeGender()}">남성용</span>
+            </div>
+            <div class="product-infos">
+                <span class="product-span-1">배송비</span>
+                <span>2500원</span>
+            </div>
+            <div class="product-infos">
+                <span class="product-span-1">출고예정일</span>
+                <span>2시 이전 당일출고</span>
+            </div>
+            <div class="product-infos">
+                <span class="product-span-1">배송방법</span>
+                <span>본사 검수 및 직배송 / CJ대한통운</span>
+            </div>
+            <div id="product-count">
+                <span class="product-span-1">수량</span>
+                <input id="product-count-input" type="number" value="1">
+                <button id="count-plus-btn"><i class="fa-solid fa-plus"></i></button>
+                <button id="count-minus-btn"><i class="fa-solid fa-minus"></i></button>
+            </div>
+            <button id="order-btn" type="button">주문하기</button>
+            <button id="basket-btn" type="button">장바구니넣기</button>
+        </div>
+
+    </div>
+
+    <div class="product-btns">
+        <button id="product-info-image-btn" active>상품상세정보</button>
+        <button id="product-review-btn">상품사용후기</button>
+    </div>
+    <div class="info-image-wrap">
+        <img id="product-info-image" th:src="${file_info.getFilepath()}" alt="">
+    </div>
+
+
+    <div id="review-container" hidden>
+        <div id="review-write-container">
+            <form th:action="@{/product/detail/review.do}" th:method="post" enctype="multipart/form-data">
+                <input type="number" th:value="${perfume_info.getPerfumeID()}" name="reviewPerfumeID" hidden>
+                <span>평점:</span>
+                <span class="star">
+                  ★★★★★
+                  <span>★★★★★</span>
+                  <input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10" name="reviewGrade">
+                </span>
+                <span>내용 :</span><textarea cols="90" rows="5" name="reviewContent" placeholder="200자" maxlength="200"></textarea>
+                <div class="filebox">
+                    <label for="file_btn">파일첨부</label>
+                    <input type="file" id="file_btn" name="file">
+                </div>
+                <button type="submit">등록</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="null-review-container" hidden>
+        <span class="comment-text"> COMMENT </span>
+        <div class="mokcha">
+            <span>NO</span>
+            <span>GRADE</span>
+            <span>NAME</span>
+            <span>COMMENT</span>
+            <span>DATE</span>
+        </div>
+        <div class="null-message">
+            <span>등록된 리뷰가 없습니다</span>
+        </div>
+    </div>
+    <div id="review-read-container" hidden>
+        <span class="comment-text"> COMMENT </span>
+        <div class="mokcha">
+            <span>NO</span>
+            <span>GRADE</span>
+            <span>NAME</span>
+            <span>COMMENT</span>
+            <span>DATE</span>
+        </div>
+        <div id="review-read-wrap">
+            <div class="review-list">
+                <span class="review review-index">1</span>
+                <span class="review-grade-wrap">
+                    ★★★★★
+                    <span class="review review-grade">★★★★★</span>
+                </span>
+                <span class="review review-userNick">누구누구님</span>
+                <span class="review review-comment">
+                    <span>
+                        좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋
+                    </span>
+                    <i class="fa-solid fa-image"></i>
+                </span>
+                <span class="review review-date">2022.10.26</span>
+            </div>
+            <div class="review-all-comment" style="display: none" th:value="fuck">
+                <img src="" alt="상품사진">
+                <span>
+                    좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋네요잉좋
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+<footer id="footer" th:replace="/layout/footer :: footer-main"></footer>
+</html>

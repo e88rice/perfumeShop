@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>PERFUME LIST</title>
+</head>
+<link rel="stylesheet" th:href="@{/css/layout/padding.css}" href="../../static/css/layout/padding.css">
+<link rel="stylesheet" th:href="@{/css/layout/header.css}" href="../../static/css/layout/header.css">
+<link rel="stylesheet" th:href="@{/css/layout/footer.css}" href="../../static/css/layout/footer.css">
+<link rel="stylesheet" th:href="@{/css/paginate/paginate.css}" href="../../static/css/paginate/paginate.css">
+<link rel="stylesheet" th:href="@{/css/product/category.css}" href="../../static/css/product/category.css">
+<script src="https://kit.fontawesome.com/4ae8b5f015.js" crossorigin="anonymous"></script>
+<script th:src="@{/js/product/category.js}" src="../../static/js/product/category.js" defer></script>
+<header id="header" th:replace="/layout/header :: header-main"></header>
+<body>
+
+<div class="gender_text" th:if="${perfumeGender == 'man'}" th:text="남성향수"></div>
+<div class="gender_text" th:if="${perfumeGender == 'woman'}" th:text="여성향수"></div>
+<div class="gender_text" th:if="${perfumeGender == 'all'}" th:text="공용향수"></div>
+
+
+<div id="category-btns-wrap">
+    <div class="ml_wrap">
+        <button class="category_btn ml" value="30">30ml 이하</button>
+        <button class="category_btn ml" value="50">50ml 이하</button>
+        <button class="category_btn ml" value="100">대용량</button>
+    </div>
+    <div class="price_wrap">
+        <button class="category_btn price" value="ASC">낮은가격순</button>
+        <button class="category_btn price" value="DESC">높은가격순</button>
+    </div>
+</div>
+
+<input type="hidden" id="save_gender" th:value="${perfumeGender}">
+
+<div id="container">
+    <div class="input-group">
+        <label for="searchBox">Filter</label>
+        <input type="search" id="searchBox" placeholder="">
+    </div>
+    <table class="products_container">
+        <tbody class="product-real-container">
+            <tr class="product_tr" th:each="perfume: ${perfumes}" th:onclick="|location.href='@{/product/detail/{id}(id=${perfume.getPerfumeID()})}'|">
+                <td><img class="product_thumbnail" th:src="@{/image/products/{image}(image = ${perfume.getPerfumeImage()})}" alt="상품사진"></td>
+                <td class="product_title" th:text="|[${perfume.getPerfumeCompany()}] ${perfume.getPerfumeTitle()}|"></td>
+                <td class="product_content" th:text="${perfume.getPerfumeContent()}"></td>
+                <td class="product_price" th:text="|${perfume.getPerfumePrice()}원|"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+</body>
+<footer id="footer" th:replace="/layout/footer :: footer-main"></footer>
+</html>

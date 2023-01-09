@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Stones 회원가입</title>
+</head>
+<link rel="stylesheet" th:href="@{/css/layout/padding.css}" href="../../static/css/layout/padding.css">
+<link rel="stylesheet" th:href="@{/css/layout/header.css}" href="../../static/css/layout/header.css">
+<link rel="stylesheet" th:href="@{/css/layout/footer.css}" href="../../static/css/layout/footer.css">
+<link rel="stylesheet" th:href="@{/css/user/register.css}" href="../../static/css/user/register.css">
+<script src="https://kit.fontawesome.com/4ae8b5f015.js" crossorigin="anonymous"></script>
+<script th:src="@{/js/user/register.js}" src="../../static/js/user/register.js" defer></script>
+<header id="header" th:replace="/layout/header :: header-main"></header>
+<body>
+<h1>회원가입</h1>
+<p>회원 정보를 입력해주세요. 모두 입력하셔야 가입이 가능합니다.</p>
+<form name="register-form" th:action="@{/user/register}" th:method="post">
+    <div id="register-container">
+        <div class="register-container-item">
+            <input id="registerID" class="register-input" name="userID" type="text" placeholder="사용하실 ID를 입력해주세요">
+            <div class="null-check-div"> 필수 항목 입니다 </div>
+        </div>
+        <div class="register-container-item">
+            <input id="registerPW" class="register-input" name="userPW" type="text" placeholder="비밀번호를 입력">
+            <div class="null-check-div"> 필수 항목 입니다 </div>
+        </div>
+        <div class="register-container-item">
+            <input id="registerPWCheck" class="register-input" type="text" placeholder="위의 비밀번호를 다시 입력해주세요.">
+            <div class="null-check-div"> 필수 항목 입니다 </div>
+        </div>
+        <div class="register-container-item">
+            <input id="registerName" class="register-input" name="userName" type="text" placeholder="이름">
+            <div class="null-check-div"> 필수 항목 입니다 </div>
+        </div>
+        <div class="register-container-item">
+            <input id="registerNickname" class="register-input" name="userNickname" type="text" placeholder="닉네임">
+            <div class="null-check-div"> 필수 항목 입니다 </div>
+        </div>
+        <div class="register-container-item-select">
+            <select id="tel-select"><option>010</option><option>011</option></select>
+            <div id="number-container">
+                <input id="registerTel" class="register-input" type="text" placeholder="휴대폰 번호 입력">
+                <div class="null-check-div"> 필수 항목 입니다 </div>
+                <input id="saveTel" type="hidden" name="userTel">
+            </div>
+        </div>
+        <div class="register-container-item-select">
+            <div id="email-container">
+                <input id="registerEmail" class="register-input" type="text" placeholder="이메일">
+                <div class="null-check-div"> 필수 항목 입니다 </div>
+                <input id="saveEmail" type="hidden" name="userEmail" >
+            </div>
+            <select id="email-select"><option>직접입력</option><option>naver.com</option><option>google.com</option></select>
+        </div>
+        <button id="submitBtn">확인</button>
+    </div>
+</form>
+</body>
+<footer id="footer" th:replace="/layout/footer :: footer-main"></footer>
+</html>

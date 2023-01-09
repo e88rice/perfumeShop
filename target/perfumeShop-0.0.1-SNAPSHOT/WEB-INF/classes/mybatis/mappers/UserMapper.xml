@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- UserMapper 전용 mybatis 구역-->
+<mapper namespace="com.example.perfumeshop.mapper.UserMapper">
+
+    <!-- 로그인 할 때 유저 찾기 -->
+    <select id="find_user" resultType="com.example.perfumeshop.vos.UserVO">
+        SELECT * FROM `user_tbl`
+        WHERE `userID` = #{userID}
+    </select>
+    <!-- 회원가입 -->
+    <insert id="register">
+        INSERT INTO `user_tbl` (`userID`, `userPW`, `userName`, `userNickname`, `userEmail`, `userTel`)
+        VALUES (#{userID}, #{userPW}, #{userName}, #{userNickname}, #{userEmail}, #{userTel})
+    </insert>
+
+    <select id="get_user_order_list" resultType="com.example.perfumeshop.dtos.PerfumeDTO">
+        SELECT p.*, DATE(o.`orderDate`) as orderDate, o.orderCount
+        FROM `order_tbl` o
+        INNER JOIN `perfume_tbl` p
+        ON o.`orderPerfumeID` = p.`perfumeID`
+        INNER JOIN `user_tbl` u
+        ON o.`orderUserID` = u.`userID`
+        WHERE o.`orderUserID` = #{userID}
+    </select>
+
+    <select id="get_user_basket_list" resultType="com.example.perfumeshop.dtos.PerfumeDTO">
+        SELECT p.*, b.`index` FROM `basket_tbl` b
+        INNER JOIN `perfume_tbl` p
+        ON b.`basketPerfumeID` = p.`perfumeID`
+        INNER JOIN `user_tbl` u
+        ON b.`basketUserID` = u.`userID`
+        WHERE b.`basketUserID` = #{userID}
+    </select>
+
+    <delete id="del_basket">
+        DELETE FROM `basket_tbl`
+        WHERE `index` = #{index}
+    </delete>
+
+    <delete id="all_del_basket">
+        DELETE FROM `basket_tbl`
+        WHERE `basketUserID` = #{userID}
+    </delete>
+
+
+</mapper>

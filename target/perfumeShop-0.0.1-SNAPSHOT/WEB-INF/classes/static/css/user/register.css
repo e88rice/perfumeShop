@@ -1,0 +1,104 @@
+
+h1 {
+    position: relative;
+    left: 29%;
+}
+
+p {
+    position: relative;
+    left: 29%;
+    height: 5px;
+    font-size: 13px;
+}
+
+#register-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    margin-bottom: 100px;
+}
+
+
+#register-container > .register-container-item > input {
+    border: 1px solid rgba(0,0,0,0.6);
+    border-bottom: none;
+}
+
+input {
+    display: block;
+    border: none;
+    height: 40px;
+    padding: 0 20px;
+    width: 40vw;
+    overflow: auto;
+}
+
+button {
+    margin-top: 20px;
+    border: none;
+    width: 200px;
+    height: 50px;
+    background-color: cornflowerblue;
+    color: white;
+}
+
+#number-container{
+    display: flex;
+    border: 1px solid rgba(0,0,0,0.3);
+    border-bottom: none;
+    flex-direction: column;
+
+}
+
+#number-container > input{
+    width: 30vw;
+}
+
+.register-container-item-select > select {
+    width: 10vw;
+    text-align: center;
+}
+
+#number-container > .null-check-div {
+    border: none;
+}
+
+#email-container{
+    display: flex;
+    border: 1px solid rgba(0,0,0,0.3);
+    flex-direction: column;
+}
+
+
+#email-container > input{
+    width: 30vw;
+}
+
+#email-container > .null-check-div {
+    border: none;
+}
+.register-container-item{
+    display: flex;
+    z-index: 1;
+    opacity: 1;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.null-check-div{
+    height: 25px;
+    background-color: white;
+    border: 1px solid rgba(0,0,0,0.6);
+    border-top: none;
+    border-bottom: none;
+    padding: 0 20px;
+    font-size: 13px;
+    color: red;
+}
+
+.register-container-item-select{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

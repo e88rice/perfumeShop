@@ -1,0 +1,83 @@
+#body{
+    height: 100vh;
+    background-color: black;
+}
+
+/* 추천 아이템들 8개 */
+#recommend-wrap > span:first-child{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    text-align: center;
+    background-color: #e3e3e3;
+    font-size: 40px;
+    font-family: Binggrae;
+    /*color: white;*/
+}
+
+#best-wrap{
+    padding-bottom: 100px;
+}
+
+#best-wrap > span:first-child {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    text-align: center;
+    background-color: #e3e3e3;
+    font-size: 40px;
+    font-family: Binggrae;
+    /*color: white;*/
+}
+
+
+.products_container{ /* 큰틀 */
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0% 13%;
+}
+.product_wrap{ /* 작은 틀 */
+    display: inline-block;
+    text-align: center;
+    width: 300px;
+    height: 300px;
+    margin: 20px;
+}
+.product_wrap > img{
+    width: 150px;
+    height: 150px;
+}
+.product_thumbnail{
+    width: 200px;
+    margin-bottom: 20px;
+}
+.product_title{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    height: 40px;
+}
+.product_content{
+    padding: 2px;
+    height: 30px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+.product_price{
+    font-weight: bold;
+}
+
+a{
+    text-decoration:none;
+    color: black;
+}

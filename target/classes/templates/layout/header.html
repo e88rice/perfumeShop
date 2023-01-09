@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+    <title></title>
+</head>
+<script src="https://kit.fontawesome.com/4ae8b5f015.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" th:href="@{/css/layout/header.css}" href="../../static/css/layout/header.css">
+<body>
+<div th:fragment="header-main" id="header_container">
+<script th:src="@{/js/layout/header.js}" src="../../static/js/layout/header.js" defer></script>
+  <a href="/"><img th:src="@{/image/logo/logo.png}" src="../../static/image/logo/logo.png" alt=""></a>
+  <div class="dropmenu">
+    <ul>
+      <li sec:authorize="isAuthenticated()">
+        <a th:if="${#authentication.principal.role == 'ADMIN'}" th:href="@{/admin/add_product}">상품등록</a>
+      </li>
+
+      <li id="man_order"><a th:href="@{/product/category/man}">남성향수</a></li>
+      <li id="woman_order"><a th:href="@{/product/category/woman}">여성향수</a></li>
+      <li id="unisex_order"><a th:href="@{/product/category/all}">공용향수</a></li>
+
+<!--      <li id="find_my_perfume"><a href="#">나의 향수 알아보기</a></li>-->
+      <li id="service_center"><a href="#">고객지원</a></li>
+    </ul>
+  </div>
+  <div class="header-icon-container">
+    <form name="search-form" id="search-form" onsubmit="return false">
+      <input id="word_input" type="text" name="word">
+      <button id="search_icon" type="button">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form>
+    <a th:href="@{/user/mypage}" id="my_page_icon"><i class="fa-regular fa-user"></i></a>
+    <a sec:authorize="isAuthenticated()" th:href="@{/logout}" id="header-logout-btn">로그아웃</a>
+    <a sec:authorize="!isAuthenticated()"th:href="@{/user/login}" id="header-login-btn">로그인</a>
+  </div>
+</div>
+</body>
+</html>
