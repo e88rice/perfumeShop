@@ -11,6 +11,7 @@ const countMinusBtn = document.getElementById("count-minus-btn");
 const productPriceText = document.getElementById("product-price-text");
 const productSavePrice = document.getElementById("product-save-price-hidden");
 const productOriginPriceText = document.getElementById("product-origin-price-text");
+const productRealPrice =document.getElementById("product-real-price");
 
 // 상세정보, 상품후기 버튼과 관련된 변수들
 const infoImagePage = document.getElementById("product-info-image");
@@ -67,8 +68,11 @@ let review_index_count = 1;
 
 // 리뷰 가져오는거
 window.onload = () => {
-    productPriceText.textContent = parseInt(productPriceText.textContent).toLocaleString();
-    productOriginPriceText.textContent = parseInt(productOriginPriceText.textContent).toLocaleString();
+    productRealPrice.firstElementChild.nextElementSibling.textContent = parseInt(productRealPrice.firstElementChild.nextElementSibling.textContent).toLocaleString()+"원";
+    productPriceText.textContent = parseInt(productPriceText.textContent).toLocaleString()+"원";
+    if (productOriginPriceText){ // 판매가와 소비자가격이 같지 않아서 표시가 되었을 경우 ( 값을 가지고 있을 경우를 뜻함 )
+        productOriginPriceText.textContent = parseInt(productOriginPriceText.textContent).toLocaleString();
+    }
     request.open('GET', 'http://localhost:8080/product/detail/review.view/'+savePerfumeID.value);
     request.send();
     request.onload = () => {
@@ -164,39 +168,40 @@ function review_open(event){
 
 }
 
+// 상품 개수 인풋 조작
+productCountInput.onchange = () => {
+    if(productCountInput.value < 1 || productCountInput.value > 100){
+        productCountInput.value = 1;
+        return;
+    }
+    const priceSaveText = productSavePrice.value; // 원래 가격 저장해놓고
+    productPriceText.textContent = (parseInt(priceSaveText)*parseInt(productCountInput.value)).toLocaleString()+"원"; // 현재 가격 + 원래 가격
 
+}
 
 // 플러스 버튼 누르면 상품개수 밸류+1, 상품 가격도 올라감
 countPlusBtn.onclick = () => {
+    if(parseInt(productCountInput.value) > 100){ // 최대 100개 까지만
+        productCountInput.value = 1;
+        return;
+    }
     productCountInput.value = parseInt(productCountInput.value) + 1;
     const priceSaveText = productSavePrice.value; // 원래 가격 저장해놓고
-    let priceTextPart = productPriceText.textContent.split(','); // 현재 상품가격 밸류의 쉼표를 제거
-    let resultPrice = '';
-    for (let i=0; i<priceTextPart.length; i++){
-        resultPrice += priceTextPart[i];
-    }
-    productPriceText.textContent = (parseInt(resultPrice)+parseInt(priceSaveText)).toLocaleString(); // 현재 가격 + 원래 가격
 
-    if(parseInt(productCountInput.value) > 20){ // 일단 최대 20개 까지만
-        productCountInput.value = parseInt(productCountInput.value) - 1;
-        console.log(productCountInput.value);
+    productPriceText.textContent = (parseInt(priceSaveText)*parseInt(productCountInput.value)).toLocaleString()+"원"; // 현재 가격 + 원래 가격
 
-    }
 }
 
 // 마이너스 버튼 누르면 상품개수 밸류-1
 countMinusBtn.onclick = () => {
-    if(parseInt(productCountInput.value) !== 1){ // 상품 갯수 1 이하로는 못떨굼
-        const priceSaveText = productSavePrice.value;
-        let priceTextPart = productPriceText.textContent.split(','); // 쉼표를 제거
-        let resultPrice = '';
-        for (let i=0; i<priceTextPart.length; i++){
-            resultPrice += priceTextPart[i];
-        }
-        productPriceText.textContent = (parseInt(resultPrice)-parseInt(priceSaveText)).toLocaleString();
-
-        productCountInput.value = parseInt(productCountInput.value) - 1;
+    if(parseInt(productCountInput.value) === 1){ // 상품 갯수 1 이하로는 못떨굼
+        productCountInput.value = 1;
+        return;
     }
+    productCountInput.value = parseInt(productCountInput.value) - 1;
+    const priceSaveText = productSavePrice.value;
+
+    productPriceText.textContent = (parseInt(priceSaveText) * parseInt(productCountInput.value)).toLocaleString()+"원";
 }
 
 orderBtn.onclick = () => {

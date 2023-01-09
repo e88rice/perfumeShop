@@ -60,6 +60,7 @@ public class ProductController {
     }
 
     // 리뷰 작성하면 데이터베이스에 추가. 이미지가 있으면 이미지 폴더에 생성해줌
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/product/detail/review.do")
     public String product_review_do(
             ReviewVO vo,
