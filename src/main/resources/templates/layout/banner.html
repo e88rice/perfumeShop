@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<link rel="stylesheet" th:href="@{/css/layout/banner.css}" href="../../static/css/layout/banner.css">
+<script th:src="@{/js/layout/banner.js}" src="../../static/js/layout/banner.js" defer></script>
+<body>
+<div id="slider-wrap" th:fragment="banner-main">
+  <ul id="slider">
+    <li>
+      <img th:src="@{/image/banner/event_banner_001.png}" src="../../static/image/banner/event_banner_001.png">
+    </li>
+
+    <li>
+      <img th:src="@{/image/banner/event_banner_002.png}" src="../../static/image/banner/event_banner_002.png">
+    </li>
+
+    <li>
+      <img th:src="@{/image/banner/event_banner_003.png}" src="../../static/image/banner/event_banner_003.png">
+    </li>
+
+  </ul>
+
+  <div class="slider-btns" id="next"><span>▶</span></div>
+  <div class="slider-btns" id="previous"><span>◀</span></div>
+
+  <div id="slider-pagination-wrap">
+    <ul>
+    </ul>
+  </div>
+</div>
+
+</body>
+</html>

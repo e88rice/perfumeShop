@@ -1,0 +1,259 @@
+#container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#order_list{
+    padding-top: 100px;
+    margin: 0 13%;
+    padding-bottom: 100px;
+}
+
+#order_list > div:first-child{
+    width: 50vw;
+    font-size: 24px;
+    border-bottom: 1px solid black;
+}
+
+.table{
+    width: 50vw;
+}
+
+tr{
+    width: 100%;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+
+}
+th{
+    line-height: 50px;
+    font-size: 14px;
+}
+td{
+    text-align: center;
+    height: 100px;
+    /*border-top: 1px solid rgba(0,0,0,0.2);*/
+}
+table {
+    border-collapse: collapse;
+}
+.product_title_image{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+.product_title_image > div{
+    padding-left: 50px;
+}
+
+.product_count{
+
+}
+
+.product_price{
+    font-weight: bold;
+}
+
+#user_info{
+    padding-top: 30px;
+    margin: 0 13%;
+    padding-bottom: 100px;
+}
+
+#user_info > div:first-child{
+    width: 50vw;
+    font-size: 24px;
+    border-bottom: 1px solid black;
+}
+
+.user_info{
+    height: 50px;
+    line-height: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    width: 50vw;
+}
+
+.user_info > span:first-child{
+    display: inline-block;
+    font-weight: bold;
+    width: 100px;
+    padding-left: 10px;
+}
+
+#user_tel_1, #user_tel_2, #user_tel_3 {
+    width: 60px;
+}
+
+#address{
+    padding-top: 30px;
+    margin: 0 13%;
+    padding-bottom: 100px;
+}
+
+#address > div:first-child{
+    width: 50vw;
+    font-size: 24px;
+    border-bottom: 1px solid black;
+}
+
+.address_info{
+    /*height: 50px;*/
+    /*line-height: 50px;*/
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    width: 50vw;
+}
+
+.address_info > span:first-child{
+    display: inline-block;
+    font-weight: bold;
+    width: 100px;
+    padding-left: 10px;
+}
+
+#address_part_1 > span:first-child{
+    display: inline-block;
+    font-weight: bold;
+    width: 100px;
+    padding-left: 10px;
+}
+.address{
+    display: flex;
+    align-items: center;
+}
+
+#address_wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+#address_part_2{
+    padding-top: 20px;
+}
+#address_part_2 > input{
+    width: 300px;
+}
+
+.message{
+    display: flex;
+    align-items: center;
+}
+
+#order_message{
+    font-size: 16px;
+    width: 100px;
+}
+#order_message > div:last-child{
+    font-size: 14px;
+    color: #666666;
+}
+
+#order{
+    padding-top: 30px;
+    margin: 0 13%;
+    padding-bottom: 100px;
+}
+
+#order > div:first-child{
+    width: 50vw;
+    font-size: 24px;
+    border-bottom: 1px solid black;
+}
+
+.order_price{
+    width: 50vw;
+    font-size: 24px;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.order_price > span:first-child{
+    display: inline-block;
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 10px;
+}
+
+.order_price > span:last-child{
+    font-weight: bold;
+}
+
+.how_payment{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    width: 50vw;
+}
+
+.how_payment > span:first-child{
+    display: inline-block;
+    width: 170px;
+    font-size: 20px;
+    font-weight: bold;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 10px;
+}
+
+.payment{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 50vw;
+}
+.payment > div {
+    padding-left: 10px;
+    height: 50px;
+}
+
+#address_part_1 > button{
+    background: #000000;
+    color: white;
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 0.25em;
+}
+
+#order_btns{
+    display: flex;
+    justify-content: center;
+}
+
+#order_btns > button {
+    width: 200px;
+    height: 60px;
+    border-radius: 0.25em;
+    font-size: 20px;
+}
+
+#order_btn{
+    background-color: black;
+    color: white;
+    border: none;
+    margin-right: 10px;
+}
+
+#cancle_btn{
+    border: 1px solid black;
+    background-color: rgba(246, 243, 221, 0.4);
+    margin-left: 10px;
+}
+
+
+
+input{
+    height: 25px;
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 0.25em;
+}
+
+#margin{
+    margin-bottom: 100px;
+}
+

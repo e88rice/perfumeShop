@@ -1,0 +1,419 @@
+body{
+    height: 100vh;
+}
+.margin-wrap{
+    margin: 0 13%;
+    padding-bottom: 100px;
+}
+#product-detail-wrap{
+    display: flex;
+    justify-content: center;
+    width: 80vw;
+}
+#product-detail-left{
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    border-right: 1px solid rgba(154, 154, 154, 0.2);
+}
+#product-main-image-wrap > img{
+    width: 500px;
+    height: 400px;
+}
+#product-sub-image-wrap{
+    display: flex;
+    width: 75%;
+    justify-content: left;
+}
+#product-sub-image-wrap > img {
+    width: 100px;
+    height: 100px;
+}
+#product-detail-right{
+    display: flex;
+    padding: 50px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 50%;
+    font-size: 20px;
+}
+#product-title{
+    display: flex;
+    align-items: flex-start;
+    font-size: 28px;
+    font-weight: bold;
+    color: black;
+    width: 450px;
+}
+
+#product-title > span:nth-child(2){
+    padding-left: 20px;
+}
+
+.null-message{
+    display: flex;
+    justify-content: center;
+}
+.null-message > span {
+    padding-top: 20px;
+}
+
+#product-price {
+    display: flex;
+    padding-top: 20px;
+    height: 50px;
+    align-items: center;
+}
+#product-price > span:nth-child(2){
+    font-size: 24px;
+    font-weight: bold;
+}
+#product-price2{
+    display: flex;
+    height: 50px;
+    align-items: center;
+}
+#product-price2 > span:nth-child(2){
+    text-decoration: line-through;
+    font-size: 20px;
+    font-weight: normal;
+}
+#product-check{
+    display: flex;
+    height: 50px;
+    align-items: center;
+}
+
+#product-gender{
+    display: flex;
+    height: 50px;
+    align-items: center;
+}
+.product-infos{
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+.product-span-1{
+    display: inline-block;
+    padding-top: 10px;
+    width: 150px;
+    font-weight: bold;
+    color: #777777;
+}
+#product-count{
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    color: #777777;
+    font-weight: bold;
+    height: 50px;
+}
+#product-count > input{
+    width: 50px;
+    height: 30px;
+    margin-right: 10px;
+    text-align: center;
+}
+#count-plus-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+    background-color: #ffffff;
+    border: none;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 1em;
+}
+
+#count-minus-btn{
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 1em;
+}
+
+#order-btn{
+    margin-top: 10px;
+    width: 60%;
+    height: 50px;
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+#basket-btn{
+    margin-top: 10px;
+    width: 60%;
+    height: 50px;
+    font-size: 20px;
+    background-color: rgba(255, 23, 23, 0.57);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.star {
+    position: relative;
+    font-size: 2rem;
+    color: #ddd;
+    padding-right: 20px;
+}
+
+.star input {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.star span {
+    width: 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    color: red;
+    overflow: hidden;
+    pointer-events: none;
+
+}
+
+
+.product-btns{
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid rgba(154, 154, 154, 0.2);
+    margin-top: 20px;
+    padding-top: 70px;
+    padding-bottom: 30px;
+}
+#product-info-image-btn{
+    width: 150px;
+    margin-right: 20px;
+    border: none;
+    font-size: 16px;
+    background-color: transparent;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
+#product-info-image-btn:hover{
+    color: rgba(0,0,0);
+    font-weight: bold;
+}
+.info-image-wrap{
+    display: flex;
+    justify-content: center;
+}
+
+
+#product-review-btn{
+    width: 150px;
+    margin-left: 20px;
+    border: none;
+    font-size: 16px;
+    background-color: transparent;
+    color: rgba(0,0,0,0.7);
+    cursor: pointer;
+}
+
+#product-review-btn:hover{
+    color: rgba(0,0,0);
+    font-weight: bold;
+}
+
+#review-write-container{
+    padding: 20px 0;
+    width: 70vw;
+    height: 100%;
+    border: 1px solid rgba(0,0,0,0.3);
+    margin-bottom: 40px;
+}
+#review-write-container > form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#review-write-container > form > textarea {
+    width: 40%;
+    margin-right: 10px;
+}
+#review-write-container > form > button {
+    width: 10%;
+    height: 80px;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    letter-spacing: 1px;
+    border-radius: 0.25em;
+    border: 1px solid #ebebeb;
+
+}
+.filebox label {
+    display: inline-block;
+    padding: .5em .75em;
+    color: #999;
+    font-size: 20px;
+    line-height: 55px;
+    vertical-align: center;
+    text-align: center;
+    background-color: #ffffff;
+    color: black;
+    cursor: pointer;
+    border: 1px solid #000000;
+    border-radius: .25em;
+    height: 55px;
+    width: 100px;
+    margin-right: 10px;
+}
+
+.filebox input[type="file"] {  /* 파일 필드 숨기기 */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip:rect(0,0,0,0);
+    border: 0;
+}
+#review-write-container > form > span:nth-child(1){
+    padding-right: 10px;
+    font-size: 20px;
+}
+#review-write-container > form > span:nth-child(3){
+    font-size: 20px;
+    padding-right: 10px;
+}
+.comment-text {
+    font-size: 22px;
+    /*border-bottom: 2px solid black;*/
+}
+#review-read-wrap{
+    width: 70vw;
+    margin-bottom: 100px;
+    /*border-left: 1px solid rgba(0,0,0,0.4);*/
+    /*border-right: 1px solid rgba(0,0,0,0.4);*/
+}
+#review-read-wrap > .review-list {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 20px 0;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.4);
+}
+.mokcha{
+    display: flex;
+    margin-top: 30px;
+    width: 70vw;
+    height: 50px;
+    text-align: center;
+    vertical-align: center;
+    border-top: 1px solid rgba(0,0,0,0.4);
+    background-color: rgba(190, 190, 190, 0.1);
+    align-items: center;
+    /*border-left: 1px solid rgba(0,0,0,0.4);*/
+    /*border-right: 1px solid rgba(0,0,0,0.4);*/
+}
+.mokcha > span:nth-child(1), .review-index{
+    display: block;
+    width: 5%;
+}
+.mokcha > span:nth-child(2){
+    display: block;
+    width: 10%;
+    padding-left: 10px;
+}
+.mokcha > span:nth-child(3){
+    padding-left: 20px;
+}
+
+.mokcha > span:nth-child(3), .review-userNick{
+    display: block;
+    width: 10%;
+
+}
+.mokcha > span:nth-child(4), .review-comment{
+    display: flex;
+    align-items: center;
+    width: 60%;
+    margin: 0 10%;
+}
+.mokcha > span:nth-child(5), .review-date{
+    display: block;
+    width: 15%;
+}
+
+.review-comment-wrap{
+    display: flex;
+    flex-direction: column;
+}
+.review-comment > span{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    cursor: pointer;
+    padding-right: 10px;
+}
+.review-comment > i{
+    font-size: 24px;
+    color: #6eaf06;
+}
+
+
+.review-all-comment{
+    display: block;
+    flex-direction: column;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 100px;
+    text-align: left;
+    font-size: 14px;
+    color: #5e5e5e;
+    width: 80%;
+}
+.review-all-comment > img {
+    max-width: 300px;
+    max-height: 300px;
+}
+.review-all-comment > span{
+    display: block;
+}
+
+.review-grade-wrap{
+    position: relative;
+    /*font-size: em;*/
+    color: #d9d9d9;
+    margin-left: 25px;
+    width: 80px;
+}
+
+.review-userNick{
+    padding-left: 30px;
+}
+
+.review-grade{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    bottom: 0;
+    color: #ffc334;
+    overflow: hidden;
+    pointer-events: none;
+}
