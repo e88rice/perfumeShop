@@ -65,7 +65,7 @@ window.onload = () => {
             console.log(checkML) // 현재 설정값 확인
             console.log(checkPrice)
 
-            request.open('GET', 'http://localhost:8080/product/category/'+perfumeGender+'/'+checkML+'/'+checkPrice);
+            request.open('GET', '/product/category/'+perfumeGender+'/'+checkML+'/'+checkPrice);
             request.send();
             request.onload = () => {
                 document.querySelector("tbody").innerHTML = '';

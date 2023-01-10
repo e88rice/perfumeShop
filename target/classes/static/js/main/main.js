@@ -5,7 +5,7 @@ const request = new XMLHttpRequest(); // 여기서 컨트롤러에 접근 가능
 
 
 window.onload = () => { // 페이지가 처음 열렸을 때
-    request.open('GET', 'http://localhost:8080/main/perfume_all_get'); // rest컨트롤러에 get방식의 main을 방문
+    request.open('GET', '/main/perfume_all_get'); // rest컨트롤러에 get방식의 main을 방문
     request.send();
     request.onload = () => { // 요청과 응답을 정상적으로 처리했다면
         productsContainer.innerHTML = ''; // 미리 존재했던 상품들 전체를 없앤다. 제로베이스로 만듬

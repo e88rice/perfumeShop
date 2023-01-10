@@ -73,7 +73,7 @@ window.onload = () => {
     if (productOriginPriceText){ // 판매가와 소비자가격이 같지 않아서 표시가 되었을 경우 ( 값을 가지고 있을 경우를 뜻함 )
         productOriginPriceText.textContent = parseInt(productOriginPriceText.textContent).toLocaleString();
     }
-    request.open('GET', 'http://localhost:8080/product/detail/review.view/'+savePerfumeID.value);
+    request.open('GET', '/product/detail/review.view/'+savePerfumeID.value);
     request.send();
     request.onload = () => {
         reviewWrap.innerHTML = '';
