@@ -70,17 +70,18 @@ public class ProductController {
             @AuthenticationPrincipal UserDTO userDTO
     ) throws Exception{
         vo.setReviewUserNick(userDTO.getUserNickname());
-        log.info("ㅎㅇㅎㅇ"+ vo);
-        log.info("확인용 "+ file);
-        log.info("확인2 "+file.getOriginalFilename());
-        if(file.getOriginalFilename() == ""){
-            log.info("비었는데요??");
-            log.info("현재 vo상태: "+vo);
-            reviewService.review_insert(vo, file);
-        }
-        else{
-            log.info("되는데요??");
-            reviewService.review_insert(vo, file);
+        if(file != null) {
+            log.info("ㅎㅇㅎㅇ" + vo);
+            log.info("확인용 " + file);
+            log.info("확인2 " + file.getOriginalFilename());
+            if (file.getOriginalFilename() == "") {
+                log.info("비었는데요??");
+                log.info("현재 vo상태: " + vo);
+                reviewService.review_insert(vo, file);
+            } else {
+                log.info("되는데요??");
+                reviewService.review_insert(vo, file);
+            }
         }
         String referer = request.getHeader("Referer"); // 이전 페이지로 이동시키기 위한 변수
         return "redirect:" + referer;
