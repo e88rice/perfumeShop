@@ -49,7 +49,7 @@ public class ProductController {
         model.addAttribute("perfume_info", perfumeService.get_perfume_info(perfumeID));
         model.addAttribute("review_info", reviewService.review_list_get(perfumeID));
         model.addAttribute("file_info", fileService.file_info_get(perfumeID));
-        return "/product/detail";
+        return "product/detail";
     }
 
     // 향수번호로 향수의 리뷰들을 가져올 수 있는 rest 컨트롤러
@@ -95,7 +95,7 @@ public class ProductController {
     ){
         model.addAttribute("perfumes", perfumeService.get_gender_perfume_list(perfumeGender));
 
-        return "/product/category";
+        return "product/category";
     }
 
     // 카테고리페이지 카테고리 기능
@@ -140,7 +140,7 @@ public class ProductController {
         model.addAttribute("perfumes", perfumeService.search_perfume_list(word));
 
 
-        return "/product/search";
+        return "product/search";
     }
 
     // 서치에서 카테고리 기능
@@ -215,7 +215,7 @@ public class ProductController {
         }
         model.addAttribute("perfumes", perfumes);
         model.addAttribute("counts", counts);
-        return "/product/order";
+        return "product/order";
     }
     // 장바구니 전부 주문!
     @PreAuthorize("isAuthenticated()")
