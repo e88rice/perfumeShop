@@ -33,14 +33,14 @@ public class MainCotroller {
             @AuthenticationPrincipal UserDTO userDTO
     ){
         log.info("헬로헬로 " +userDTO);
-        return "/main/main";
+        return "main/main";
     }
 
     @PostMapping("/")
     public String main_view_post(
             @AuthenticationPrincipal UserDTO userDTO
     ){         log.info("헬로헬로2 " +userDTO);
-        return "/main/main"; }
+        return "main/main"; }
 
     @ResponseBody
     @GetMapping("/main/perfume_all_get")
