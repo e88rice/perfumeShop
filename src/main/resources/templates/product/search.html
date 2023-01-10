@@ -12,7 +12,7 @@
 <link rel="stylesheet" th:href="@{/css/product/search.css}" href="../../static/css/product/search.css">
 <script src="https://kit.fontawesome.com/4ae8b5f015.js" crossorigin="anonymous"></script>
 <script th:src="@{/js/product/search.js}" src="../../static/js/product/search.js" defer></script>
-<header id="header" th:replace="/layout/header :: header-main"></header>
+<header id="header" th:replace="layout/header :: header-main"></header>
 <body>
 
 <div class="gender_text" th:text="|${word}에 대한 검색결과|"></div>
@@ -51,5 +51,5 @@
 
 
 </body>
-<footer id="footer" th:replace="/layout/footer :: footer-main"></footer>
+<footer id="footer" th:replace="layout/footer :: footer-main"></footer>
 </html>
