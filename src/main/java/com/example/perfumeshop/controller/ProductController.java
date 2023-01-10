@@ -77,10 +77,10 @@ public class ProductController {
             if (file.getOriginalFilename() == "") {
                 log.info("비었는데요??");
                 log.info("현재 vo상태: " + vo);
-                reviewService.review_insert(vo, file);
+                reviewService.review_insert(vo, file, request);
             } else {
                 log.info("되는데요??");
-                reviewService.review_insert(vo, file);
+                reviewService.review_insert(vo, file, request);
             }
         }
         String referer = request.getHeader("Referer"); // 이전 페이지로 이동시키기 위한 변수

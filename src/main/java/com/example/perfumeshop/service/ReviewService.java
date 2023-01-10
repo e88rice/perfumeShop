@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.util.List;
 import java.util.UUID;
@@ -23,10 +24,10 @@ public class ReviewService {
 
 
     // 리뷰 작성
-    public void review_insert(ReviewVO vo, MultipartFile file) throws Exception{
+    public void review_insert(ReviewVO vo, MultipartFile file, HttpServletRequest request) throws Exception{
 
         // 저장할 경로를 미리 정해둔 후
-        String reviewPath = "/image/review";
+        String reviewPath = request.getContextPath()+"/image/review";
         // 랜덤 식별자
         UUID uuid = UUID.randomUUID();
         // 파일이름을 랜덤 식별자와 원래 파일이름 사이에 밑줄넣은 상태로 지정한다
