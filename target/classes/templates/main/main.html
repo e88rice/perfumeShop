@@ -13,8 +13,8 @@
 <script src="https://kit.fontawesome.com/4ae8b5f015.js" crossorigin="anonymous"></script>
 <script th:src="@{/js/layout/banner.js}" src="../../static/js/layout/banner.js" defer></script>
 <script th:src="@{/js/main/main.js}" src="../../static/js/main/main.js" defer></script>
-<header id="header" th:replace="/layout/header :: header-main"></header>
-<label id="banner" th:replace="/layout/banner :: banner-main"></label>
+<header id="header" th:replace="layout/header :: header-main"></header>
+<label id="banner" th:replace="layout/banner :: banner-main"></label>
 <body>
 
 <div id="recommend-wrap">
@@ -41,5 +41,5 @@
 
 
 </body>
-<footer id="footer" th:replace="/layout/footer :: footer-main"></footer>
+<footer id="footer" th:replace="layout/footer :: footer-main"></footer>
 </html>
