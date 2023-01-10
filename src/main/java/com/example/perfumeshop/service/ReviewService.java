@@ -26,7 +26,7 @@ public class ReviewService {
     public void review_insert(ReviewVO vo, MultipartFile file) throws Exception{
 
         // 저장할 경로를 미리 정해둔 후
-        String reviewPath = "/src/main/resources/static/image/review";
+        String reviewPath = "/image/review";
         // 랜덤 식별자
         UUID uuid = UUID.randomUUID();
         // 파일이름을 랜덤 식별자와 원래 파일이름 사이에 밑줄넣은 상태로 지정한다
