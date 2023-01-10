@@ -34,24 +34,33 @@
             <div id="product-title">
                 <span th:text="|[${perfume_info.getPerfumeCompany()}]${perfume_info.getPerfumeTitle()}|">까르뱅 쎄 파리 옴므 EDT 50ml</span>
             </div>
-            <div id="product-price">
+            <div id="product-real-price">
                 <span class="product-span-1">판매가격</span>
-                <span id="product-price-text" th:text="${perfume_info.getPerfumePrice()}">28,900</span>
-                <input id="product-save-price-hidden" type="hidden" th:value="${perfume_info.getPerfumePrice()}">
+                <span th:text="${perfume_info.getPerfumePrice()}"></span>
             </div>
+
             <div id="product-price2" th:if="${perfume_info.getPerfumePrice() != perfume_info.getPerfumeOriginPrice()}">
                 <span class="product-span-1">소비자가격</span>
                 <span id="product-origin-price-text" th:text="${perfume_info.getPerfumeOriginPrice()}">58,800</span>
                 <input id="product-save-origin-price-hidden" type="hidden" th:value="${perfume_info.getPerfumePrice()}">
             </div>
+
             <div id="product-check">
                 <span class="product-span-1">크기&향</span>
                 <span th:text="|${perfume_info.getPerfumeML()}ml / ${perfume_info.getPerfumeScent()}|">50ml 우드</span>
             </div>
+
             <div id="product-gender">
                 <span class="product-span-1">추천성별</span>
                 <span th:text="${perfume_info.getPerfumeGender()}">남성용</span>
             </div>
+
+            <div id="product-price">
+                <span class="product-span-1">옵션가격</span>
+                <span id="product-price-text" th:text="|${perfume_info.getPerfumePrice()}원|">28,900</span>
+                <input id="product-save-price-hidden" type="hidden" th:value="${perfume_info.getPerfumePrice()}">
+            </div>
+
             <div class="product-infos">
                 <span class="product-span-1">배송비</span>
                 <span>2500원</span>
