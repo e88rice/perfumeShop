@@ -32,15 +32,20 @@ let result_total_order_price = 0;
 
 // 페이징 및 총 주문금액 계산하고 구분점 달아주는 이벤트
 window.onload = () => {
-    Prices_reload();
+    if(basketPrices.length > 0){
+        Prices_reload();
+    }
     // 계산, 구분점
     orderPrices.forEach(function (e){
-        const split = e.textContent.split(',');
+        const split = e.textContent.split('원')[0].split(',');
+        const count = e.previousElementSibling.textContent;
         let result = '';
         for (let i=0; i<split.length; i++){
             result += split[i]
         }
-        result_total_order_price += parseInt(result);
+        console.log(e.textContent)
+        e.textContent = (parseInt(result)*parseInt(count)).toLocaleString()+"원";
+        result_total_order_price += (parseInt(result) * parseInt(count));
 
         totalOrderPrice.textContent = parseInt(result_total_order_price).toLocaleString() + "원";
 
@@ -68,17 +73,19 @@ function Prices_reload(){
         e.textContent = parseInt(result).toLocaleString() + "원";
     })
     total_price = 0;
-    basketPrices.forEach(function (e){
-        const split = e.textContent.split('원')[0].split(',');
-        let result = '';
-        for (let i=0; i<split.length; i++){
-            result += split[i]
-        }
-        total_price += parseInt(result);
-    })
+    if (basketPrices){
+        basketPrices.forEach(function (e){
+            const split = e.textContent.split('원')[0].split(',');
+            let result = '';
+            for (let i=0; i<split.length; i++){
+                result += split[i]
+            }
+            total_price += parseInt(result);
+        })
 
 
-    totalPrice.textContent = "총 합계금액:\t" + total_price.toLocaleString() + "원";
+        totalPrice.textContent = "총 합계금액:\t" + total_price.toLocaleString() + "원";
+    }
 }
 
 // 개수 input 조작
@@ -132,18 +139,20 @@ countMinusBtn.forEach(function (e){
     }
 })
 // 장바구니 구매하기 버튼
-allBuyButton.onclick = () => {
-    let perfumeID_Array = []; // 향수 번호 배열 그릇
-    let productCount_Array = []; // 상품 개수 배열 그릇
-    savePerfumeID.forEach(function (e){
-        perfumeID_Array.push(e.value); // 그릇 배열의 끝에 향수 번호를 추가 저장함
-    })
-    console.log(perfumeID_Array);
-    productCountInput.forEach(function (e){
-        productCount_Array.push(e.value); // 그릇 배열의 끝에 상품 개수를 추가 저장함
-    })
-    // 모든 배열이 다 준비 됐다면 order창으로 리스트를 보내줌
-    location.href=`/product/basket/all/order/${perfumeID_Array}/${productCount_Array}`;
+if (allBuyButton){
+    allBuyButton.onclick = () => {
+        let perfumeID_Array = []; // 향수 번호 배열 그릇
+        let productCount_Array = []; // 상품 개수 배열 그릇
+        savePerfumeID.forEach(function (e){
+            perfumeID_Array.push(e.value); // 그릇 배열의 끝에 향수 번호를 추가 저장함
+        })
+        console.log(perfumeID_Array);
+        productCountInput.forEach(function (e){
+            productCount_Array.push(e.value); // 그릇 배열의 끝에 상품 개수를 추가 저장함
+        })
+        // 모든 배열이 다 준비 됐다면 order창으로 리스트를 보내줌
+        location.href=`/product/basket/all/order/${perfumeID_Array}/${productCount_Array}`;
+    }
 }
 
 

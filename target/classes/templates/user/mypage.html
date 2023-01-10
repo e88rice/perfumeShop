@@ -60,7 +60,7 @@
                 <td th:text="${order.orderDate}"></td>
                 <td><img th:src="|@{/image/products/{image}(image = ${order.perfumeImage})}|" alt="상품사진"></td>
                 <td class="titles" th:text="${order.perfumeTitle}"></td>
-                <td th:text="${order.orderCount}"></td>
+                <td class="order_count" th:value="${order.orderCount}" th:text="${order.orderCount}"></td>
                 <td class="order_prices prices" th:text="|${order.perfumePrice}원|"></td>
                 <td>배송준비중</td>
             </tr>
