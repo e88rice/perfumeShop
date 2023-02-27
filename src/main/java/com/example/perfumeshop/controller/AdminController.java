@@ -51,7 +51,8 @@ public class AdminController {
     ) throws Exception{
 
         UUID uuid = UUID.randomUUID();
-        String productFilePath = request.getContextPath() +"/image/products";
+        String productFilePath = System.getProperty("user.dir") + "/perfumeShop-0.0.1-SNAPSHOT/WEB-INF/classes/static/image/products";
+
         List<FileVO> fileVOS = new ArrayList<>();
 
         log.info("추가 전 마지막 퍼퓸 번호 확인: "+perfumeService.find_last_perfumeID());
