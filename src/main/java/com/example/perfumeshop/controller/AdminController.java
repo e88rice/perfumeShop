@@ -70,7 +70,7 @@ public class AdminController {
 
         for (MultipartFile file : files) {
             FileVO vo = new FileVO();
-            log.info("-----멀티파트파일리스트 확인-----");
+            log.info("-----멀티파트파일리스트 확인인-----");
             log.info(file);
             String fileName = uuid + "_" + file.getOriginalFilename();
             File saveFile = new File(productFilePath, fileName);
